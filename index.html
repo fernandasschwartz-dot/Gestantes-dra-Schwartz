@@ -2,339 +2,373 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>APP GESTANTES DRA SCHWARTZ</title>
+  <title>PRÉ-NATAL DRA. SCHWARTZ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- Ícones -->
-  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-  <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-  <meta name="theme-color" content="#ec407a">
-
-  <!-- SPLASH CSS -->
   <style>
-    #splash {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: linear-gradient(135deg, #ec407a, #ab47bc);
+    :root {
+      --rosa1: #ec407a;
+      --rosa2: #d81b60;
+      --rosa3: #f48fb1;
+      --rosa-claro: #ffe4ef;
+      --titulo: #880e4f;
+      --bg: #fff7fb;
+
+      --risk-baixo: #e8f5e9;
+      --risk-intermediario: #fff8e1;
+      --risk-alto: #ffebee;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: #333;
+    }
+
+    header {
+      background: var(--rosa1);
+      text-align: center;
       color: white;
+      padding: 25px 15px;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 26px;
+      font-weight: 800;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      z-index: 99999;
-      transition: opacity 0.6s ease;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      gap: 10px;
     }
 
-    #splash img {
-      width: 160px;
-      height: 160px;
+    .gestante-icon {
+      font-size: 30px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .chip {
+      display: inline-block;
+      background: rgba(255,255,255,0.25);
+      padding: 5px 12px;
+      border-radius: 999px;
+      margin: 3px;
+      font-size: 12px;
+    }
+
+    .container {
+      padding: 15px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid var(--rosa3);
+      padding: 18px;
       border-radius: 14px;
       margin-bottom: 20px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-      object-fit: cover;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.08);
     }
 
-    #splash h1 {
-      font-size: 24px;
-      font-weight: 600;
+    h2 {
+      color: var(--titulo);
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 18px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+      margin-top: 4px;
+      font-size: 14px;
+    }
+
+    button {
+      background: var(--rosa1);
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      border-radius: 8px;
       margin-top: 10px;
-      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
     }
-  </style>
 
-  <!-- SEU CSS ORIGINAL -->
-  <style>
+    button:hover {
+      background: var(--rosa2);
+    }
 
-:root {
-  --primary: #ec407a;
-  --primary-dark: #b31660;
-  --accent: #f4a0bc;
-  --accent-soft: #f3c5f5;
-  --bg-soft: #fff7fb;
-  --card-bg: #ffffff;
-  --text-main: #303a4a;
-  --border-soft: #f1d3e6;
-}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background: radial-gradient(circle at top left, #fffafe 0%, #fff7fb 40%, #ffffff 100%);
-  color: var(--text-main);
-}
+    th {
+      background: var(--rosa-claro);
+      padding: 8px;
+      font-weight: bold;
+      color: var(--titulo);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
 
-/* HEADER */
-header {
-  text-align: center;
-  background: var(--primary);
-  color: white;
-  padding: 22px 14px;
-  border-bottom-left-radius: 18px;
-  border-bottom-right-radius: 18px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-}
+    td {
+      padding: 6px;
+      border-bottom: 1px solid #eee;
+    }
 
-header h1 {
-  margin: 0;
-  font-size: 22px;
-  font-weight: bold;
-}
+    .risk-baixo {
+      background: var(--risk-baixo);
+      border-left: 4px solid #2e7d32;
+    }
 
-.subtitle {
-  font-size: 14px;
-  margin-top: 6px;
-  opacity: 0.95;
-}
+    .risk-intermediario {
+      background: var(--risk-intermediario);
+      border-left: 4px solid #ffa000;
+    }
 
-/* ÍCONES */
-.preg-icon-big {
-  font-size: 32px;
-}
+    .risk-alto {
+      background: var(--risk-alto);
+      border-left: 4px solid #c62828;
+    }
 
-/* FORMULÁRIO */
-.container {
-  padding: 16px;
-}
+    .badge {
+      border-radius: 999px;
+      padding: 2px 8px;
+      font-size: 11px;
+      display: inline-block;
+      margin-bottom: 2px;
+    }
 
-.card {
-  background: var(--card-bg);
-  padding: 16px;
-  border-radius: 14px;
-  margin-bottom: 18px;
-  border: 1px solid var(--border-soft);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
-}
-
-label {
-  font-weight: bold;
-  margin-top: 10px;
-  display: block;
-}
-
-input, select, button {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid var(--border-soft);
-  margin-top: 6px;
-  font-size: 16px;
-  background: #fff;
-  box-sizing: border-box;
-}
-
-button {
-  background: var(--primary);
-  color: white;
-  border: none;
-  cursor: pointer;
-  margin-top: 14px;
-  transition: 0.2s;
-}
-
-button:hover {
-  background: var(--primary-dark);
-}
-
-/* RESULTADOS */
-.result-box {
-  background: #fff5fa;
-  border-left: 5px solid var(--primary);
-  padding: 14px;
-  border-radius: 10px;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
-/* TABELA */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 14px;
-}
-
-table th {
-  background: var(--primary);
-  color: white;
-  padding: 8px;
-}
-
-table td {
-  padding: 8px;
-  border-bottom: 1px solid #eee;
-}
-
+    .ok { background: #e8f5e9; color: #2e7d32; }
+    .warn { background: #fff8e1; color: #ef6c00; }
+    .neutral { background: #eceff1; color: #455a64; }
   </style>
 </head>
 
 <body>
-
-<!-- SPLASH -->
-<div id="splash">
-  <img src="icon-192.png" alt="Logo APP">
-  <h1>APP Gestantes – Dra. Schwartz</h1>
-</div>
-
 <header>
-  <h1><span class="preg-icon-big">🤰</span> APP GESTANTES DRA SCHWARTZ</h1>
-  <div class="subtitle">IG pelas US (OU DUM) ❤️ exames, vacinas, odonto e risco em um só lugar</div>
+  <h1><span class="gestante-icon">🤰</span> PRÉ-NATAL DRA. SCHWARTZ</h1>
+  <div class="subtitle">Estratificação por risco + alertas automáticos conforme o protocolo</div>
+  <div>
+    <span class="chip">🟢 Habitual</span>
+    <span class="chip">🟡 Intermediário</span>
+    <span class="chip">🔴 Alto risco</span>
+  </div>
 </header>
 
 <div class="container">
-
+  
   <div class="card">
-    <label for="dum">DUM (opcional se tiver US):</label>
+    <h2>🤰 Cadastro de Gestante</h2>
+
+    <!-- CAMPOS -->
+    <label>Nome</label>
+    <input id="nome">
+
+    <label>Risco</label>
+    <select id="risco">
+      <option value="baixo">Risco habitual</option>
+      <option value="intermediario">Intermediário</option>
+      <option value="alto">Alto risco</option>
+    </select>
+
+    <label>DUM</label>
     <input type="date" id="dum">
 
-    <label for="data_us">Data da primeira US:</label>
-    <input type="date" id="data_us">
+    <label>Data da 1ª US</label>
+    <input type="date" id="dataUS">
 
-    <label for="semanas_us">Idade gestacional na US (semanas):</label>
-    <input type="number" id="semanas_us" min="0" max="42">
+    <label>IG na US (semanas)</label>
+    <input type="number" id="usSemanas" min="0" max="42">
 
-    <label for="dias_us">Dias:</label>
-    <input type="number" id="dias_us" min="0" max="6">
+    <label>IG na US (dias)</label>
+    <input type="number" id="usDias" min="0" max="6">
 
-    <button onclick="calcularIG()">Calcular Idade Gestacional</button>
+    <label>Justificativa do risco</label>
+    <textarea id="justificativa"></textarea>
+
+    <label>Exames 1º tri</label>
+    <select id="ex1">
+      <option value="pendente">Pendente</option>
+      <option value="solicitado">Solicitado</option>
+      <option value="realizado">Realizado</option>
+    </select>
+
+    <label>Exames 2º tri / TTOG</label>
+    <select id="ex2">
+      <option value="pendente">Pendente</option>
+      <option value="solicitado">Solicitado</option>
+      <option value="realizado">Realizado</option>
+    </select>
+
+    <label>Exames 3º tri</label>
+    <select id="ex3">
+      <option value="pendente">Pendente</option>
+      <option value="solicitado">Solicitado</option>
+      <option value="realizado">Realizado</option>
+    </select>
+
+    <label>Vacinas</label>
+    <select id="vac">
+      <option value="pendente">Pendente</option>
+      <option value="ok">OK</option>
+    </select>
+
+    <label>Odontologia</label>
+    <select id="od">
+      <option value="pendente">Pendente</option>
+      <option value="ok">OK</option>
+    </select>
+
+    <button onclick="salvar()">💾 Salvar gestante</button>
   </div>
 
+  <!-- TABELA -->
   <div class="card">
-    <h3>Resultado IG:</h3>
-    <div id="resultado" class="result-box"></div>
-  </div>
-
-  <div class="card">
-    <h3>Exames recomendados:</h3>
-    <div id="exames"></div>
-  </div>
-
-  <div class="card">
-    <h3>Vacinas:</h3>
-    <div id="vacinas"></div>
-  </div>
-
-  <div class="card">
-    <h3>Odontologia:</h3>
-    <div id="odonto"></div>
+    <h2>📋 Gestantes cadastradas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>IG Hoje</th>
+          <th>DPP</th>
+          <th>Risco</th>
+          <th>Exames</th>
+          <th>Alertas</th>
+        </tr>
+      </thead>
+      <tbody id="lista"></tbody>
+    </table>
   </div>
 
 </div>
 
-<!-- ============================= -->
-<!-- SCRIPT PRINCIPAL DO APLICATIVO -->
-<!-- ============================= -->
 <script>
+let gestantes = JSON.parse(localStorage.getItem("gestantesPN")) || [];
 
-// Função principal
-function calcularIG() {
-  const dum = document.getElementById("dum").value;
-  const dataUS = document.getElementById("data_us").value;
-  const semanasUS = parseInt(document.getElementById("semanas_us").value || 0);
-  const diasUS = parseInt(document.getElementById("dias_us").value || 0);
-
-  let dataBase;
-  let gestacaoDias = 0;
-
-  if (dataUS && (semanasUS || diasUS)) {
-      dataBase = new Date(dataUS);
-      gestacaoDias = semanasUS * 7 + diasUS;
-  } else if (dum) {
-      dataBase = new Date(dum);
-      gestacaoDias = 0;
-  } else {
-      document.getElementById("resultado").innerHTML = "Preencha DUM ou US.";
-      return;
-  }
-
+function calcularIG(dum, dataUS, usSem, usDia) {
   const hoje = new Date();
-  const diasPassados = Math.floor((hoje - dataBase) / (1000 * 60 * 60 * 24));
-  const total = diasPassados + gestacaoDias;
+  let base;
+  let diasBase = 0;
 
-  const semanas = Math.floor(total / 7);
-  const dias = total % 7;
+  if (dataUS && usSem !== "" && usDia !== "") {
+    base = new Date(dataUS);
+    diasBase = usSem * 7 + usDia;
+  } else if (dum) {
+    base = new Date(dum);
+  } else return null;
 
-  document.getElementById("resultado").innerHTML =
-    `Idade gestacional: <b>${semanas} semanas e ${dias} dias</b>`;
-
-  gerarExames(semanas);
-  gerarVacinas(semanas);
-  gerarOdonto(semanas);
+  const diff = Math.floor((hoje - base) / 86400000);
+  const total = diff + diasBase;
+  return {
+    semanas: Math.floor(total / 7),
+    dias: total % 7,
+    total
+  };
 }
 
+function calcularDPP(dum, dataUS, usSem, usDia) {
+  let base;
 
-// ================================
-// EXAMES
-// ================================
+  if (dum) {
+    base = new Date(dum);
+  } else if (dataUS && usSem !== "" && usDia !== "") {
+    const dataRef = new Date(dataUS);
+    const total = usSem * 7 + usDia;
+    base = new Date(dataRef.getTime() - total * 86400000);
+  } else return "";
 
-function gerarExames(s) {
-  let texto = "";
-
-  if (s < 12) {
-    texto += "• Hemograma, glicemia, TSH, tipagem sanguínea, VDRL, HIV, urina I, urocultura, Toxoplasmose, HBsAg, anti-HCV.<br>";
-    texto += "• US obstétrica do 1º trimestre.<br>";
-  }
-
-  if (s >= 20 && s <= 24) {
-    texto += "• US morfológica de 2º trimestre.<br>";
-  }
-
-  if (s > 28) {
-    texto += "• Repetir VDRL, HIV, glicemia e urina I.<br>";
-  }
-
-  if (!texto) texto = "Nenhum exame específico para esta semana.";
-
-  document.getElementById("exames").innerHTML = texto;
+  const dpp = new Date(base.getTime() + 280 * 86400000);
+  return dpp.toISOString().slice(0,10);
 }
 
+function gerarAlertas(ig) {
+  if (!ig) return "";
 
-// ================================
-// VACINAS
-// ================================
+  const w = ig.semanas;
+  let a = [];
 
-function gerarVacinas(s) {
-  let t = "";
+  if (w <= 13) a.push("Solicitar exames do 1º tri");
+  if (w >= 20 && w <= 26) a.push("Solicitar US morfológica 20–26s");
+  if (w >= 24 && w <= 28) a.push("Solicitar TTOG 75 g + exames 2º tri");
+  if (w >= 32 && w <= 36) a.push("Solicitar exames do 3º trimestre");
+  if (w >= 34 && w <= 37) a.push("US 34–37 semanas");
 
-  t += "• dTpa a partir de 20 semanas.<br>";
-  t += "• Influenza em qualquer idade gestacional.<br>";
-  t += "• Hepatite B se esquema incompleto.<br>";
-
-  document.getElementById("vacinas").innerHTML = t;
+  return a.join("<br>");
 }
 
+function salvar() {
+  const g = {
+    nome: document.getElementById("nome").value,
+    risco: document.getElementById("risco").value,
+    dum: document.getElementById("dum").value,
+    dataUS: document.getElementById("dataUS").value,
+    usSem: document.getElementById("usSemanas").value,
+    usDia: document.getElementById("usDias").value,
+    justificativa: document.getElementById("justificativa").value,
+    ex1: document.getElementById("ex1").value,
+    ex2: document.getElementById("ex2").value,
+    ex3: document.getElementById("ex3").value,
+    vac: document.getElementById("vac").value,
+    od: document.getElementById("od").value
+  };
 
-// ================================
-// ODONTOLOGIA
-// ================================
-
-function gerarOdonto(s) {
-  let o = "";
-
-  o += "• Avaliação odontológica inicial.<br>";
-  o += "• Risco gestacional não impede atendimento odonto.<br>";
-
-  document.getElementById("odonto").innerHTML = o;
+  gestantes.push(g);
+  localStorage.setItem("gestantesPN", JSON.stringify(gestantes));
+  listar();
 }
 
+function listar() {
+  const tabela = document.getElementById("lista");
+  tabela.innerHTML = "";
 
-// ================================
-// SPLASH SCREEN REMOVE
-// ================================
+  gestantes.forEach(g => {
+    const ig = calcularIG(g.dum, g.dataUS, g.usSem, g.usDia);
+    const dpp = calcularDPP(g.dum, g.dataUS, g.usSem, g.usDia);
 
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    const s = document.getElementById("splash");
-    if (s) {
-      s.style.opacity = "0";
-      setTimeout(() => s.remove(), 600);
-    }
-  }, 900);
-});
+    let riscoClass =
+      g.risco === "baixo" ? "risk-baixo" :
+      g.risco === "intermediario" ? "risk-intermediario" :
+      "risk-alto";
 
+    tabela.innerHTML += `
+      <tr class="${riscoClass}">
+        <td><b>🤰 ${g.nome}</b></td>
+        <td>${ig ? `${ig.semanas}s ${ig.dias}d` : "-"}</td>
+        <td>${dpp}</td>
+        <td>${g.risco}</td>
+        <td>
+          <span class="badge neutral">1º tri: ${g.ex1}</span><br>
+          <span class="badge neutral">2º tri: ${g.ex2}</span><br>
+          <span class="badge neutral">3º tri: ${g.ex3}</span>
+        </td>
+        <td>${ig ? gerarAlertas(ig) : "-"}</td>
+      </tr>
+    `;
+  });
+}
+
+listar();
 </script>
 
 </body>
