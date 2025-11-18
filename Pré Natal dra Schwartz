@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>APP GESTANTES DRA SCHWARTZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --primary: #ec407a;
+      --primary-dark: #d81b60;
+      --accent: #ab47bc;
+      --accent-soft: #f3e5f5;
+      --bg-soft: #fff7fb;
+      --card-bg: #ffffff;
+      --text-main: #3b3a4a;
+      --border-soft: #f1d3e6;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top left, #ffe4f0 0, #fff7fb 40%, #ffffff 100%);
+      color: var(--text-main);
+    }
+
+    header {
+      background: linear-gradient(135deg, #ec407a, #ab47bc);
+      color: white;
+      padding: 18px 16px 14px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.18);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .preg-icon-big {
+      font-size: 26px;
+    }
+
+    header .subtitle {
+      font-size: 13px;
+      opacity: 0.92;
+      margin-top: 4px;
+    }
+
+    .header-strip {
+      margin-top: 6px;
+      font-size: 13px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      opacity: 0.9;
+    }
+
+    .header-chip {
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+      padding: 2px 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 16px auto;
+      padding: 0 10px 20px;
+    }
+
+    h2 {
+      margin: 0 0 12px 0;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 16px;
+      border-radius: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(236,64,122,0.18), transparent 70%);
+      pointer-events: none;
+    }
+
+    label {
+      display: block;
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #5a4a63;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 8px 10px;
+      margin-top: 4px;
+      border-radius: 10px;
+      border: 1px solid #e3cfe5;
+      font-size: 14px;
+      box-sizing: border-box;
+      background: #fdf8ff;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      outline: none;
+      border-color: var(--accent);
+      background: #ffffff;
+      box-shadow: 0 0 0 2px rgba(171,71,188,0.18);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .col-3 { flex: 1 1 150px; }
+    .col-4 { flex: 1 1 200px; }
+    .col-6 { flex: 1 1 300px; }
+    .col-12 { flex: 1 1 100%; }
+
+    button {
+      padding: 9px 18px;
+      border-radius: 999px;
+      border: none;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.02em;
+      transition: transform 0.1s ease, box-shadow 0.1s ease, background 0.15s ease;
+    }
+
+    button:active {
+      transform: scale(0.97);
+      box-shadow: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 4px 10px rgba(236,64,122,0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-secondary {
+      background: #f3e5f5;
+      color: #5e3a67;
+      box-shadow: 0 2px 6px rgba(171,71,188,0.25);
+    }
+
+    .btn-danger {
+      background: #ef5350;
+      color: white;
+      box-shadow: 0 3px 8px rgba(239,83,80,0.35);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    th, td {
+      border-bottom: 1px solid #f0dfee;
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #fbe9f2;
+      color: #5a3453;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background: #fffafc;
+    }
+
+    tr:hover {
+      background: #fef1f9;
+    }
+
+    .badge {
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid transparent;
+    }
+
+    .badge-ok {
+      background: #e2f5e9;
+      color: #2e7d32;
+      border-color: #b6e0c3;
+    }
+
+    .badge-warning {
+      background: #fff6d1;
+      color: #f57f17;
+      border-color: #ffe082;
+    }
+
+    .badge-danger {
+      background: #ffdde0;
+      color: #c62828;
+      border-color: #ef9a9a;
+    }
+
+    .badge-neutral {
+      background: #f1edf6;
+      color: #5f5670;
+      border-color: #d2c4e2;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 2px 7px;
+      font-size: 11px;
+      border-radius: 999px;
+      background: #e1f5fe;
+      color: #0277bd;
+      margin-right: 4px;
+      margin-top: 4px;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .tag-high {
+      background: #ffebee;
+      color: #b71c1c;
+    }
+
+    .tag-inter {
+      background: #fff3e0;
+      color: #e65100;
+    }
+
+    .top-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .top-actions input {
+      max-width: 240px;
+    }
+
+    .top-actions-right {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .text-small {
+      font-size: 11.5px;
+      color: #6b6477;
+    }
+
+    #qrcode {
+      margin-top: 8px;
+      display: inline-block;
+      padding: 6px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+
+    .preg-icon-row {
+      font-size: 18px;
+      margin-right: 4px;
+    }
+
+    .chip-soft {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #fce4ec;
+      font-size: 11px;
+      color: #ad1457;
+      margin-top: 4px;
+    }
+
+    @media (max-width: 900px) {
+      th, td {
+        font-size: 11.5px;
+      }
+      .row {
+        flex-direction: column;
+      }
+      .top-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      header h1 {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>
+      <span class="preg-icon-big">🤰</span>
+      APP GESTANTES DRA SCHWARTZ
+      <span class="preg-icon-big">💗</span>
+    </h1>
+    <div class="subtitle">
+      IG pela US (ou DUM) + exames, vacinas, odonto e risco em um só lugar
+    </div>
+    <div class="header-strip">
+      <span class="header-chip">📅 Pré-natal organizado</span>
+      <span class="header-chip">🧪 Alertas de exames</span>
+      <span class="header-chip">👩‍⚕️ Visão da UBS / microárea</span>
+    </div>
+  </header>
+
+  <div class="container">
+
+    <!-- Formulário -->
+    <div class="card">
+      <h2>🤰 Nova gestante / Editar gestante</h2>
+      <form id="patientForm">
+        <input type="hidden" id="patientId">
+
+        <div class="row">
+          <div class="col-6">
+            <label>Nome da gestante</label>
+            <input type="text" id="name" required>
+          </div>
+
+          <div class="col-3">
+            <label>Classificação de risco</label>
+            <select id="risk">
+              <option value="">Não informado</option>
+              <option value="baixo">Risco habitual</option>
+              <option value="intermediario">Risco intermediário</option>
+              <option value="alto">Alto risco</option>
+            </select>
+          </div>
+
+          <div class="col-3">
+            <label>UBS</label>
+            <input type="text" id="ubs" placeholder="Ex.: UBS Santuário / Rocio">
+          </div>
+
+          <div class="col-3">
+            <label>Microárea</label>
+            <input type="text" id="microarea" placeholder="Ex.: MA 03">
+          </div>
+
+          <div class="col-3">
+            <label>ACS responsável</label>
+            <input type="text" id="acs" placeholder="Nome do ACS">
+          </div>
+
+          <div class="col-3">
+            <label>DUM</label>
+            <input type="date" id="lmp">
+          </div>
+
+          <div class="col-3">
+            <label>Data da US de referência (1º trimestre)</label>
+            <input type="date" id="usRefDate">
+          </div>
+
+          <div class="col-3">
+            <label>IG na US de referência (semanas)</label>
+            <input type="number" id="usRefWeeks" min="4" max="20" placeholder="ex.: 12">
+          </div>
+
+          <div class="col-3">
+            <label>IG na US de referência (dias)</label>
+            <input type="number" id="usRefDays" min="0" max="6" placeholder="0–6">
+          </div>
+
+          <div class="col-3">
+            <label>Última US realizada</label>
+            <input type="date" id="lastUS">
+          </div>
+
+          <div class="col-3">
+            <label>Próxima US planejada</label>
+            <input type="date" id="nextUS">
+          </div>
+
+          <div class="col-3">
+            <label>Próxima consulta PN</label>
+            <input type="date" id="nextVisit">
+          </div>
+
+          <div class="col-3">
+            <label>DPP (calculada)</label>
+            <input type="date" id="dpp" readonly>
+          </div>
+
+          <div class="col-12">
+            <label>Motivo / justificativa da classificação de risco</label>
+            <textarea id="riskReason" placeholder="Ex.: HAS crônica, DMG prévia, idade &gt; 35 anos, etc."></textarea>
+          </div>
+
+          <div class="col-12">
+            <label>Controle de exames de rotina</label>
+          </div>
+
+          <div class="col-4">
+            <label>Exames 1º trimestre</label>
+            <select id="exFirstTri">
+              <option value="">Não solicitado</option>
+              <option value="ordered">Solicitado</option>
+              <option value="done">Realizado</option>
+            </select>
+          </div>
+
+          <div class="col-4">
+            <label>TTOG / Exames 2º trimestre</label>
+            <select id="exSecondTri">
+              <option value="">Não solicitado</option>
+              <option value="ordered">Solicitado</option>
+              <option value="done">Realizado</option>
+            </select>
+          </div>
+
+          <div class="col-4">
+            <label>Exames 3º trimestre</label>
+            <select id="exThirdTri">
+              <option value="">Não solicitado</option>
+              <option value="ordered">Solicitado</option>
+              <option value="done">Realizado</option>
+            </select>
+          </div>
+
+          <div class="col-6">
+            <label>Situação vacinas</label>
+            <select id="vaccinesStatus">
+              <option value="">Não informado</option>
+              <option value="ok">OK / Em dia</option>
+              <option value="pendente">Pendente</option>
+            </select>
+          </div>
+
+          <div class="col-6">
+            <label>Consulta odontológica</label>
+            <select id="dentalStatus">
+              <option value="">Não informado</option>
+              <option value="ok">OK / Realizada</option>
+              <option value="pendente">Pendente</option>
+            </select>
+          </div>
+
+          <div class="col-12">
+            <label>Observações gerais</label>
+            <textarea id="notes" placeholder="Ex.: IG pela DUM, intercorrências, exames específicos, uso de medicação, etc."></textarea>
+          </div>
+        </div>
+
+        <div class="text-small">
+          <strong>Regra:</strong> se houver US de referência com IG preenchida, a IG/DPP será calculada pela US.
+          Caso contrário, a IG/DPP será calculada pela DUM.
+        </div>
+
+        <button type="submit" class="btn-primary">
+          💾 Salvar gestante
+        </button>
+        <button type="button" class="btn-secondary" onclick="resetForm()">
+          🧹 Limpar
+        </button>
+      </form>
+    </div>
+
+    <!-- Lista -->
+    <div class="card">
+      <h2>📋 Gestantes cadastradas</h2>
+      <div class="top-actions">
+        <div class="text-small">
+          Visão rápida das gestantes por IG, risco, exames, vacinas e odonto.
+        </div>
+        <div class="top-actions-right">
+          <input type="text" id="search" placeholder="🔎 Buscar por nome..." oninput="renderTable()">
+          <button type="button" class="btn-secondary" onclick="exportCSV()">📤 Exportar CSV</button>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Gestante / Risco / Território</th>
+            <th>IG ref.</th>
+            <th>DPP</th>
+            <th>Próx. consulta</th>
+            <th>Próx. US</th>
+            <th>Status</th>
+            <th>Exames (rotina)</th>
+            <th>Vacinas / Odonto</th>
+            <th>Alertas</th>
+            <th>Obs.</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="patientsTableBody">
+          <!-- Linhas via JS -->
+        </tbody>
+      </table>
+
+      <div class="text-small" style="margin-top:8px;">
+        Os alertas ajudam a lembrar janelas de 1º, 2º e 3º trimestre (laboratoriais, TTOG e US) conforme a IG.
+      </div>
+    </div>
+
+    <!-- QR Code -->
+    <div class="card">
+      <h2>📱 Acesso rápido pelo celular</h2>
+      <div class="row">
+        <div class="col-6">
+          <p class="text-small">
+            Aponte a câmera do celular para o QR Code para abrir o
+            <strong>APP GESTANTES DRA SCHWARTZ</strong> neste mesmo endereço.
+            <br><br>
+            Dica: hospede este arquivo em um endereço fixo (por exemplo, GitHub Pages ou servidor da prefeitura)
+            para que o QR funcione em qualquer dispositivo.
+          </p>
+          <div class="chip-soft">
+            🌐 Depois salve como “Adicionar à tela inicial” no celular.
+          </div>
+        </div>
+        <div class="col-6" style="text-align:center;">
+          <div id="qrcode"></div>
+          <div class="text-small">QR Code do endereço atual da página</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Biblioteca para gerar QR Code -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script>
+    const STORAGE_KEY = 'gestantes_prenatal';
+
+    // --------- UTILIDADES DE DADOS ---------
+
+    function loadPatients() {
+      const data = localStorage.getItem(STORAGE_KEY);
+      if (!data) return [];
+      try {
+        return JSON.parse(data);
+      } catch (e) {
+        console.error('Erro ao ler dados:', e);
+        return [];
+      }
+    }
+
+    function savePatients(patients) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(patients));
+    }
+
+    function diffDays(dateStr) {
+      if (!dateStr) return null;
+      const today = new Date();
+      const target = new Date(dateStr);
+      today.setHours(0,0,0,0);
+      target.setHours(0,0,0,0);
+      const diffMs = target - today;
+      return Math.round(diffMs / (1000 * 60 * 60 * 24));
+    }
+
+    // IG pela US
+    function calculateGAByUS(usRefDateStr, usRefWeeks, usRefDays) {
+      if (!usRefDateStr || usRefWeeks === '' || usRefWeeks === null) return null;
+      const refDate = new Date(usRefDateStr);
+      if (isNaN(refDate.getTime())) return null;
+
+      const w = parseInt(usRefWeeks, 10);
+      const d = parseInt(usRefDays || '0', 10);
+      if (isNaN(w) || isNaN(d)) return null;
+
+      const today = new Date();
+      refDate.setHours(0,0,0,0);
+      today.setHours(0,0,0,0);
+      const diff = Math.round((today - refDate) / (1000 * 60 * 60 * 24));
+
+      let totalDays = w * 7 + d + diff;
+      if (totalDays < 0) totalDays = 0;
+
+      const weeks = Math.floor(totalDays / 7);
+      const days = totalDays % 7;
+      return { weeks, days };
+    }
+
+    // IG pela DUM
+    function calculateGAByLMP(lmpStr) {
+      if (!lmpStr) return null;
+      const lmp = new Date(lmpStr);
+      if (isNaN(lmp.getTime())) return null;
+
+      const today = new Date();
+      lmp.setHours(0,0,0,0);
+      today.setHours(0,0,0,0);
+      let diff = Math.round((today - lmp) / (1000 * 60 * 60 * 24));
+      if (diff < 0) diff = 0;
+
+      const weeks = Math.floor(diff / 7);
+      const days = diff % 7;
+      return { weeks, days };
+    }
+
+    // IG que será usada (prioriza US; se não tiver, usa DUM)
+    function calculateGAForPatient(p) {
+      const gaUS = calculateGAByUS(p.usRefDate, p.usRefWeeks, p.usRefDays);
+      if (gaUS) return gaUS;
+      return calculateGAByLMP(p.lmp);
+    }
+
+    // DPP pela US
+    function calculateDPPByUS(usRefDateStr, usRefWeeks, usRefDays) {
+      if (!usRefDateStr || usRefWeeks === '' || usRefWeeks === null) return '';
+      const refDate = new Date(usRefDateStr);
+      if (isNaN(refDate.getTime())) return '';
+
+      const w = parseInt(usRefWeeks, 10);
+      const d = parseInt(usRefDays || '0', 10);
+      if (isNaN(w) || isNaN(d)) return '';
+
+      const gestDurationDays = 280;
+      const refGaDays = w * 7 + d;
+      const remainingDays = gestDurationDays - refGaDays;
+
+      const dppDate = new Date(refDate.getTime() + remainingDays * 24 * 60 * 60 * 1000);
+      const yyyy = dppDate.getFullYear();
+      const mm = String(dppDate.getMonth() + 1).padStart(2, '0');
+      const dd = String(dppDate.getDate()).padStart(2, '0');
+      return `${yyyy}-${mm}-${dd}`;
+    }
+
+    // DPP pela DUM
+    function calculateDPPByLMP(lmpStr) {
+      if (!lmpStr) return '';
+      const lmp = new Date(lmpStr);
+      if (isNaN(lmp.getTime())) return '';
+      const dppDate = new Date(lmp.getTime() + 280 * 24 * 60 * 60 * 1000);
+      const yyyy = dppDate.getFullYear();
+      const mm = String(dppDate.getMonth() + 1).padStart(2, '0');
+      const dd = String(dppDate.getDate()).padStart(2, '0');
+      return `${yyyy}-${mm}-${dd}`;
+    }
+
+    // Decide DPP (prioriza US, senão DUM)
+    function computeAndSetDPP() {
+      const usRefDate = document.getElementById('usRefDate').value;
+      const usRefWeeks = document.getElementById('usRefWeeks').value;
+      const usRefDays = document.getElementById('usRefDays').value;
+      const lmp = document.getElementById('lmp').value;
+
+      let dpp = calculateDPPByUS(usRefDate, usRefWeeks, usRefDays);
+      if (!dpp) {
+        dpp = calculateDPPByLMP(lmp);
+      }
+      document.getElementById('dpp').value = dpp || '';
+    }
+
+    function getStatusBadge(patient) {
+      const visitDiff = diffDays(patient.nextVisit);
+      const usDiff = diffDays(patient.nextUS);
+
+      if (visitDiff === null && usDiff === null) return '';
+
+      let ref = null;
+      if (visitDiff === null) {
+        ref = usDiff;
+      } else if (usDiff === null) {
+        ref = visitDiff;
+      } else {
+        ref = Math.min(visitDiff, usDiff);
+      }
+
+      if (ref < 0) {
+        return '<span class="badge badge-danger">⚠️ Atrasado</span>';
+      } else if (ref <= 7) {
+        return '<span class="badge badge-warning">⏰ Até 7 dias</span>';
+      } else {
+        return '<span class="badge badge-ok">✅ Em dia</span>';
+      }
+    }
+
+    function examStatusBadge(code) {
+      if (!code) {
+        return '<span class="badge badge-neutral">Não solicitado</span>';
+      }
+      if (code === 'ordered') {
+        return '<span class="badge badge-warning">📄 Solicitado</span>';
+      }
+      if (code === 'done') {
+        return '<span class="badge badge-ok">🧪 Realizado</span>';
+      }
+      return '<span class="badge badge-neutral">Não solicitado</span>';
+    }
+
+    function okPendenteBadge(code, labelOk = 'OK', labelPend = 'Pendente') {
+      if (!code) {
+        return '<span class="badge badge-neutral">Não informado</span>';
+      }
+      if (code === 'ok') {
+        return `<span class="badge badge-ok">✅ ${labelOk}</span>`;
+      }
+      if (code === 'pendente') {
+        return `<span class="badge badge-warning">⚠️ ${labelPend}</span>`;
+      }
+      return '<span class="badge badge-neutral">Não informado</span>';
+    }
+
+    // --------- ALERTAS DE EXAMES POR IG ---------
+
+    function getExamAlerts(ga) {
+      if (!ga) return '';
+      const w = ga.weeks;
+      const alerts = [];
+
+      // 1º trimestre
+      if (w <= 13) {
+        alerts.push('Garantir exames do 1º trimestre (painel inicial + US 8–13s).');
+      }
+
+      // 2º trimestre
+      if (w >= 20 && w <= 26) {
+        alerts.push('Verificar/solicitar US morfológica (20–26s).');
+      }
+      if (w >= 24 && w <= 28) {
+        alerts.push('Solicitar TTOG 75 g e exames de 2º trimestre (24–28s).');
+      }
+
+      // 3º trimestre
+      if (w >= 32 && w <= 36) {
+        alerts.push('Solicitar exames de 3º trimestre (hemograma, urina, sorologias).');
+      }
+      if (w >= 34 && w <= 37) {
+        alerts.push('Programar/confirmar US de 34–37s.');
+      }
+
+      if (alerts.length === 0) return '';
+      return '• ' + alerts.join('<br>• ');
+    }
+
+    // --------- FORMULÁRIO ---------
+
+    function resetForm() {
+      document.getElementById('patientId').value = '';
+      document.getElementById('patientForm').reset();
+      document.getElementById('dpp').value = '';
+    }
+
+    function fillForm(patient) {
+      document.getElementById('patientId').value = patient.id;
+      document.getElementById('name').value = patient.name || '';
+      document.getElementById('risk').value = patient.risk || '';
+      document.getElementById('ubs').value = patient.ubs || '';
+      document.getElementById('microarea').value = patient.microarea || '';
+      document.getElementById('acs').value = patient.acs || '';
+      document.getElementById('lmp').value = patient.lmp || '';
+      document.getElementById('usRefDate').value = patient.usRefDate || '';
+      document.getElementById('usRefWeeks').value = patient.usRefWeeks ?? '';
+      document.getElementById('usRefDays').value = patient.usRefDays ?? '';
+      document.getElementById('lastUS').value = patient.lastUS || '';
+      document.getElementById('nextUS').value = patient.nextUS || '';
+      document.getElementById('nextVisit').value = patient.nextVisit || '';
+      document.getElementById('dpp').value = patient.dpp || '';
+      document.getElementById('riskReason').value = patient.riskReason || '';
+      document.getElementById('exFirstTri').value = patient.exFirstTri || '';
+      document.getElementById('exSecondTri').value = patient.exSecondTri || '';
+      document.getElementById('exThirdTri').value = patient.exThirdTri || '';
+      document.getElementById('vaccinesStatus').value = patient.vaccinesStatus || '';
+      document.getElementById('dentalStatus').value = patient.dentalStatus || '';
+      document.getElementById('notes').value = patient.notes || '';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function deletePatient(id) {
+      if (!confirm('Deseja realmente excluir esta gestante?')) return;
+      let patients = loadPatients();
+      patients = patients.filter(p => p.id !== id);
+      savePatients(patients);
+      renderTable();
+    }
+
+    function editPatient(id) {
+      const patients = loadPatients();
+      const patient = patients.find(p => p.id === id);
+      if (!patient) return;
+      fillForm(patient);
+    }
+
+    // Atualizar DPP quando mexer na US ref / IG / DUM
+    ['usRefDate','usRefWeeks','usRefDays','lmp'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('change', computeAndSetDPP);
+      }
+    });
+
+    document.getElementById('patientForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const id = document.getElementById('patientId').value || String(Date.now());
+
+      const patient = {
+        id,
+        name: document.getElementById('name').value.trim(),
+        risk: document.getElementById('risk').value,
+        ubs: document.getElementById('ubs').value.trim(),
+        microarea: document.getElementById('microarea').value.trim(),
+        acs: document.getElementById('acs').value.trim(),
+        lmp: document.getElementById('lmp').value,
+        usRefDate: document.getElementById('usRefDate').value,
+        usRefWeeks: document.getElementById('usRefWeeks').value === '' ? null : document.getElementById('usRefWeeks').value,
+        usRefDays: document.getElementById('usRefDays').value === '' ? null : document.getElementById('usRefDays').value,
+        lastUS: document.getElementById('lastUS').value,
+        nextUS: document.getElementById('nextUS').value,
+        nextVisit: document.getElementById('nextVisit').value,
+        dpp: document.getElementById('dpp').value,
+        riskReason: document.getElementById('riskReason').value.trim(),
+        exFirstTri: document.getElementById('exFirstTri').value,
+        exSecondTri: document.getElementById('exSecondTri').value,
+        exThirdTri: document.getElementById('exThirdTri').value,
+        vaccinesStatus: document.getElementById('vaccinesStatus').value,
+        dentalStatus: document.getElementById('dentalStatus').value,
+        notes: document.getElementById('notes').value.trim()
+      };
+
+      let patients = loadPatients();
+      const index = patients.findIndex(p => p.id === id);
+      if (index >= 0) {
+        patients[index] = patient;
+      } else {
+        patients.push(patient);
+      }
+      savePatients(patients);
+      resetForm();
+      renderTable();
+    });
+
+    // --------- EXPORTAR CSV ---------
+
+    function exportCSV() {
+      const patients = loadPatients();
+      if (!patients.length) {
+        alert('Nenhuma gestante cadastrada para exportar.');
+        return;
+      }
+
+      const header = [
+        'Nome',
+        'Risco',
+        'Motivo_risco',
+        'UBS',
+        'Microarea',
+        'ACS',
+        'DUM',
+        'IG_atual',
+        'DPP',
+        'Prox_consulta',
+        'Prox_US',
+        'Exames_1tri',
+        'Exames_2tri',
+        'Exames_3tri',
+        'Vacinas',
+        'Odonto',
+        'Observacoes'
+      ];
+      const rows = [header.join(';')];
+
+      function mapRisk(r) {
+        if (r === 'alto') return 'Alto risco';
+        if (r === 'baixo') return 'Risco habitual';
+        if (r === 'intermediario') return 'Risco intermediario';
+        return '';
+      }
+
+      function mapExam(code) {
+        if (!code) return 'Nao solicitado';
+        if (code === 'ordered') return 'Solicitado';
+        if (code === 'done') return 'Realizado';
+        return 'Nao solicitado';
+      }
+
+      function mapOkPend(code, ok, pend) {
+        if (!code) return 'Nao informado';
+        if (code === 'ok') return ok;
+        if (code === 'pendente') return pend;
+        return 'Nao informado';
+      }
+
+      patients.forEach(p => {
+        const ga = calculateGAForPatient(p);
+        const gaText = ga ? `${ga.weeks}s+${ga.days}d` : '';
+
+        const row = [
+          (p.name || '').replace(/[\r\n]/g, ' '),
+          mapRisk(p.risk),
+          (p.riskReason || '').replace(/[\r\n]/g, ' '),
+          (p.ubs || '').replace(/[\r\n]/g, ' '),
+          (p.microarea || '').replace(/[\r\n]/g, ' '),
+          (p.acs || '').replace(/[\r\n]/g, ' '),
+          p.lmp || '',
+          gaText,
+          p.dpp || '',
+          p.nextVisit || '',
+          p.nextUS || '',
+          mapExam(p.exFirstTri),
+          mapExam(p.exSecondTri),
+          mapExam(p.exThirdTri),
+          mapOkPend(p.vaccinesStatus, 'Vacinas OK', 'Vacinas pendentes'),
+          mapOkPend(p.dentalStatus, 'Odonto OK', 'Odonto pendente'),
+          (p.notes || '').replace(/[\r\n]/g, ' ')
+        ];
+
+        rows.push(row.join(';'));
+      });
+
+      const csvContent = rows.join('\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'gestantes_prenatal.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // --------- TABELA ---------
+
+    function renderTable() {
+      const tbody = document.getElementById('patientsTableBody');
+      const search = document.getElementById('search').value.toLowerCase();
+      const patients = loadPatients();
+
+      patients.sort((a, b) => {
+        if (!a.nextVisit && !b.nextVisit) return 0;
+        if (!a.nextVisit) return 1;
+        if (!b.nextVisit) return -1;
+        return new Date(a.nextVisit) - new Date(b.nextVisit);
+      });
+
+      tbody.innerHTML = '';
+
+      patients
+        .filter(p => !search || (p.name || '').toLowerCase().includes(search))
+        .forEach(patient => {
+          const tr = document.createElement('tr');
+
+          let riskTag = '';
+          if (patient.risk === 'alto') {
+            riskTag = '<span class="tag tag-high">⚠️ Alto risco</span>';
+          } else if (patient.risk === 'baixo') {
+            riskTag = '<span class="tag">✅ Risco habitual</span>';
+          } else if (patient.risk === 'intermediario') {
+            riskTag = '<span class="tag tag-inter">🟡 Risco intermediário</span>';
+          }
+
+          const ga = calculateGAForPatient(patient);
+          const gaText = ga ? `${ga.weeks}s + ${ga.days}d` : '-';
+          const examAlerts = getExamAlerts(ga);
+
+          const exFirst = examStatusBadge(patient.exFirstTri);
+          const exSecond = examStatusBadge(patient.exSecondTri);
+          const exThird = examStatusBadge(patient.exThirdTri);
+
+          const vacBadge = okPendenteBadge(patient.vaccinesStatus, 'Vacinas OK', 'Vacinas pendentes');
+          const odontBadge = okPendenteBadge(patient.dentalStatus, 'Odonto OK', 'Odonto pendente');
+
+          const territoryLine = [
+            patient.ubs ? `UBS: ${patient.ubs}` : '',
+            patient.microarea ? `MA: ${patient.microarea}` : '',
+            patient.acs ? `ACS: ${patient.acs}` : ''
+          ].filter(Boolean).join(' | ');
+
+          const riskReasonText = patient.riskReason
+            ? `<div class="text-small"><strong>Motivo risco:</strong> ${patient.riskReason.substring(0, 80)}${patient.riskReason.length > 80 ? '…' : ''}</div>`
+            : '';
+
+          tr.innerHTML = `
+            <td>
+              <span class="preg-icon-row">🤰</span>
+              <strong>${patient.name || ''}</strong><br>
+              ${riskTag}
+              ${riskReasonText}
+              ${territoryLine ? `<div class="text-small">${territoryLine}</div>` : ''}
+            </td>
+            <td>${gaText}</td>
+            <td>${patient.dpp || '-'}</td>
+            <td>${patient.nextVisit || '-'}</td>
+            <td>${patient.nextUS || '-'}</td>
+            <td>${getStatusBadge(patient)}</td>
+            <td class="text-small">
+              <strong>1º tri:</strong> ${exFirst}<br>
+              <strong>2º tri/TTOG:</strong> ${exSecond}<br>
+              <strong>3º tri:</strong> ${exThird}
+            </td>
+            <td class="text-small">
+              <strong>Vacinas:</strong> ${vacBadge}<br>
+              <strong>Odonto:</strong> ${odontBadge}
+            </td>
+            <td class="text-small">${examAlerts || ''}</td>
+            <td>${patient.notes ? patient.notes.substring(0, 80) + (patient.notes.length > 80 ? '…' : '') : ''}</td>
+            <td>
+              <button class="btn-secondary" onclick='editPatient("${patient.id}")'>✏️</button>
+              <button class="btn-danger" onclick='deletePatient("${patient.id}")'>🗑️</button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+    }
+
+    // --------- QR CODE ---------
+
+    function generateQRCode() {
+      const qrDiv = document.getElementById('qrcode');
+      if (!qrDiv || typeof QRCode === 'undefined') return;
+      qrDiv.innerHTML = '';
+      new QRCode(qrDiv, {
+        text: window.location.href,
+        width: 128,
+        height: 128
+      });
+    }
+
+    // Inicializar
+    renderTable();
+    generateQRCode();
+  </script>
+</body>
+</html>
