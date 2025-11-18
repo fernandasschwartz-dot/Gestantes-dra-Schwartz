@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>APP GESTANTES DRA SCHWARTZ</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <title>APP GESTANTES DRA SCHWARTZ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- ÍCONES DO APP -->
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
-<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
-<meta name="theme-color" content="#ec407a">
+  <!-- Ícones -->
+  <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+  <meta name="theme-color" content="#ec407a">
 
-<!-- SPLASH CSS -->
-<style>
-  #splash {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: linear-gradient(135deg, #ec407a, #ab47bc);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.6s ease;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-  }
+  <!-- SPLASH CSS -->
+  <style>
+    #splash {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: linear-gradient(135deg, #ec407a, #ab47bc);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 99999;
+      transition: opacity 0.6s ease;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
 
-  #splash img {
-    width: 160px;
-    height: 160px;
-    border-radius: 12px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-    object-fit: cover;
-  }
+    #splash img {
+      width: 160px;
+      height: 160px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      object-fit: cover;
+    }
 
-  #splash h1 {
-    font-size: 22px;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 10px;
-    letter-spacing: 0.5px;
-  }
-</style>
+    #splash h1 {
+      font-size: 24px;
+      font-weight: 600;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
 
-<!-- SEU CSS ORIGINAL -->
-<style>
+  <!-- SEU CSS ORIGINAL -->
+  <style>
+
 :root {
   --primary: #ec407a;
   --primary-dark: #b31660;
@@ -60,54 +60,281 @@
   --border-soft: #f1d3e6;
 }
 
-/* MUITO CÓDIGO CSS AQUI…  
-   NÃO APAGUE NADA, DEIXE TUDO IGUAL AO ORIGINAL  */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top left, #fffafe 0%, #fff7fb 40%, #ffffff 100%);
+  color: var(--text-main);
+}
 
-</style>
+/* HEADER */
+header {
+  text-align: center;
+  background: var(--primary);
+  color: white;
+  padding: 22px 14px;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 14px;
+  margin-top: 6px;
+  opacity: 0.95;
+}
+
+/* ÍCONES */
+.preg-icon-big {
+  font-size: 32px;
+}
+
+/* FORMULÁRIO */
+.container {
+  padding: 16px;
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 16px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  border: 1px solid var(--border-soft);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+}
+
+label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-soft);
+  margin-top: 6px;
+  font-size: 16px;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 14px;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: var(--primary-dark);
+}
+
+/* RESULTADOS */
+.result-box {
+  background: #fff5fa;
+  border-left: 5px solid var(--primary);
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* TABELA */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 14px;
+}
+
+table th {
+  background: var(--primary);
+  color: white;
+  padding: 8px;
+}
+
+table td {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+  </style>
 </head>
 
 <body>
 
-<!-- SPLASH SCREEN -->
+<!-- SPLASH -->
 <div id="splash">
-  <img src="logo-splash.png" alt="Logo APP Gestantes Dra. Schwartz">
+  <img src="icon-192.png" alt="Logo APP">
   <h1>APP Gestantes – Dra. Schwartz</h1>
 </div>
 
-<!-- AQUI COMEÇA O CONTEÚDO DO SEU APP -->
 <header>
-  <h1>
-    <span class="preg-icon-big">🤰</span>
-    APP GESTANTES DRA SCHWARTZ
-  </h1>
-  <div class="subtitle">
-    IG pelas US (OU DUM) ❤️ exames, vacinas, odonto e risco em um só lugar
-  </div>
+  <h1><span class="preg-icon-big">🤰</span> APP GESTANTES DRA SCHWARTZ</h1>
+  <div class="subtitle">IG pelas US (OU DUM) ❤️ exames, vacinas, odonto e risco em um só lugar</div>
 </header>
 
-<!-- TODO O SEU CÓDIGO HTML ORIGINAL FICA AQUI  
-     FORMULÁRIO, TABELA, BOTÕES, CALCULADORA DE IG, ETC  
-     (NADA ALTERADO, APENAS MANTIDO IGUAL AO SEU ARQUIVO) -->
+<div class="container">
 
-<!-- NÃO APAGUE OS SCRIPTS ORIGINAIS DO FIM DO ARQUIVO -->
+  <div class="card">
+    <label for="dum">DUM (opcional se tiver US):</label>
+    <input type="date" id="dum">
 
-<!-- SCRIPT PARA REMOVER O SPLASH -->
+    <label for="data_us">Data da primeira US:</label>
+    <input type="date" id="data_us">
+
+    <label for="semanas_us">Idade gestacional na US (semanas):</label>
+    <input type="number" id="semanas_us" min="0" max="42">
+
+    <label for="dias_us">Dias:</label>
+    <input type="number" id="dias_us" min="0" max="6">
+
+    <button onclick="calcularIG()">Calcular Idade Gestacional</button>
+  </div>
+
+  <div class="card">
+    <h3>Resultado IG:</h3>
+    <div id="resultado" class="result-box"></div>
+  </div>
+
+  <div class="card">
+    <h3>Exames recomendados:</h3>
+    <div id="exames"></div>
+  </div>
+
+  <div class="card">
+    <h3>Vacinas:</h3>
+    <div id="vacinas"></div>
+  </div>
+
+  <div class="card">
+    <h3>Odontologia:</h3>
+    <div id="odonto"></div>
+  </div>
+
+</div>
+
+<!-- ============================= -->
+<!-- SCRIPT PRINCIPAL DO APLICATIVO -->
+<!-- ============================= -->
 <script>
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const splash = document.getElementById('splash');
-      if (splash) {
-        splash.style.opacity = '0';
-        setTimeout(() => splash.remove(), 600);
-      }
-    }, 900);
-  });
-</script>
 
-<!-- SEUS OUTROS SCRIPTS ORIGINAIS AQUI -->
-<script>
-/* TODO O SEU CÓDIGO JS ORIGINAL VAI AQUI  
-   NADA É APAGADO  */
+// Função principal
+function calcularIG() {
+  const dum = document.getElementById("dum").value;
+  const dataUS = document.getElementById("data_us").value;
+  const semanasUS = parseInt(document.getElementById("semanas_us").value || 0);
+  const diasUS = parseInt(document.getElementById("dias_us").value || 0);
+
+  let dataBase;
+  let gestacaoDias = 0;
+
+  if (dataUS && (semanasUS || diasUS)) {
+      dataBase = new Date(dataUS);
+      gestacaoDias = semanasUS * 7 + diasUS;
+  } else if (dum) {
+      dataBase = new Date(dum);
+      gestacaoDias = 0;
+  } else {
+      document.getElementById("resultado").innerHTML = "Preencha DUM ou US.";
+      return;
+  }
+
+  const hoje = new Date();
+  const diasPassados = Math.floor((hoje - dataBase) / (1000 * 60 * 60 * 24));
+  const total = diasPassados + gestacaoDias;
+
+  const semanas = Math.floor(total / 7);
+  const dias = total % 7;
+
+  document.getElementById("resultado").innerHTML =
+    `Idade gestacional: <b>${semanas} semanas e ${dias} dias</b>`;
+
+  gerarExames(semanas);
+  gerarVacinas(semanas);
+  gerarOdonto(semanas);
+}
+
+
+// ================================
+// EXAMES
+// ================================
+
+function gerarExames(s) {
+  let texto = "";
+
+  if (s < 12) {
+    texto += "• Hemograma, glicemia, TSH, tipagem sanguínea, VDRL, HIV, urina I, urocultura, Toxoplasmose, HBsAg, anti-HCV.<br>";
+    texto += "• US obstétrica do 1º trimestre.<br>";
+  }
+
+  if (s >= 20 && s <= 24) {
+    texto += "• US morfológica de 2º trimestre.<br>";
+  }
+
+  if (s > 28) {
+    texto += "• Repetir VDRL, HIV, glicemia e urina I.<br>";
+  }
+
+  if (!texto) texto = "Nenhum exame específico para esta semana.";
+
+  document.getElementById("exames").innerHTML = texto;
+}
+
+
+// ================================
+// VACINAS
+// ================================
+
+function gerarVacinas(s) {
+  let t = "";
+
+  t += "• dTpa a partir de 20 semanas.<br>";
+  t += "• Influenza em qualquer idade gestacional.<br>";
+  t += "• Hepatite B se esquema incompleto.<br>";
+
+  document.getElementById("vacinas").innerHTML = t;
+}
+
+
+// ================================
+// ODONTOLOGIA
+// ================================
+
+function gerarOdonto(s) {
+  let o = "";
+
+  o += "• Avaliação odontológica inicial.<br>";
+  o += "• Risco gestacional não impede atendimento odonto.<br>";
+
+  document.getElementById("odonto").innerHTML = o;
+}
+
+
+// ================================
+// SPLASH SCREEN REMOVE
+// ================================
+
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const s = document.getElementById("splash");
+    if (s) {
+      s.style.opacity = "0";
+      setTimeout(() => s.remove(), 600);
+    }
+  }, 900);
+});
+
 </script>
 
 </body>
